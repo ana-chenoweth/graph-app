@@ -42,6 +42,7 @@ public:
     ~Grafica();
     Grafica &operator=(const Grafica &g);
     Grafica(const Grafica &g);
+    void Agregar(char nom);
 };
 
 #endif // GRAFICA_HPP_INCLUDED
