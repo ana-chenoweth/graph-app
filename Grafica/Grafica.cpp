@@ -314,8 +314,20 @@ Grafica::Nodo * Grafica::BuscarDir(char nom) const
 }
 //***********************************************************************************
 
-// M�todo para verificar si un nodo est� aislado (sin aristas)
+// Metodo para verificar si un nodo esta aislado (sin aristas)
 bool Grafica::Nodo::EstaAislado() const
 {
     return grado == 0;
+}
+//***********************************************************************************
+
+// Metodo para aislar un nodo eliminando todas sus aristas y devolviendo su grado previo
+int Grafica::Nodo::Aislar()
+{
+    int numAristas = grado;
+    while(!EstaAislado()){
+        primera->adyacente->Eliminar(this);
+        Eliminar(primera->adyacente);
+    }
+    return numAristas;
 }
