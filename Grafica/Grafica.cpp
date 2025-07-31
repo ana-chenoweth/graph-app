@@ -8,4 +8,11 @@ Grafica::Grafica(): numNodos(0), numAristas(0), primero(nullptr), ultimo(nullptr
 {
 
 }
+//***********************************************************************************
+
+// Destructor de la clase Grafica
+Grafica::~Grafica()
+{
+    Vaciar();
+}
 

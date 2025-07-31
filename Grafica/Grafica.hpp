@@ -39,6 +39,7 @@ private:
 
 public:
     Grafica();
+    ~Grafica();
 };
 
 #endif // GRAFICA_HPP_INCLUDED
