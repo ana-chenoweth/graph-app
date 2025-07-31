@@ -312,3 +312,10 @@ Grafica::Nodo * Grafica::BuscarDir(char nom) const
 
     return actual;
 }
+//***********************************************************************************
+
+// M�todo para verificar si un nodo est� aislado (sin aristas)
+bool Grafica::Nodo::EstaAislado() const
+{
+    return grado == 0;
+}
