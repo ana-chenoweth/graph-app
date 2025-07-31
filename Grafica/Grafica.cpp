@@ -164,3 +164,31 @@ int Grafica::ObtenerNumAristas() const
 {
     return numAristas;
 }
+//***********************************************************************************
+
+// M�todo para obtener el grado de un nodo dado su nombre
+int Grafica::ObtenerGrado(char nom) const
+{
+    Nodo *nodo = BuscarDir(nom);
+
+    if (nodo != nullptr)
+        return nodo->grado;
+
+    return 0; // si el nodo no existe, su grado es 0. //excepcion
+}
+//***********************************************************************************
+
+// M�todo para imprimir toda la gr�fica
+void Grafica::Imprimir() const
+{
+    Nodo *nodoActual = primero;
+    while (nodoActual != nullptr) {
+        std::cout << "Nodo: " << nodoActual->nombre << ", Grado: " << nodoActual->grado << std::endl;
+        Arista *aristaActual = nodoActual->primera;
+        while (aristaActual != nullptr) {
+            std::cout << "  -> Arista hacia nodo: " << aristaActual->adyacente->nombre << std::endl;
+            aristaActual = aristaActual->siguiente;
+        }
+        nodoActual = nodoActual->siguiente;
+    }
+}

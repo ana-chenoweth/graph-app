@@ -52,6 +52,7 @@ public:
     bool Buscar(char inicio, char fin) const;
     int ObtenerNumNodos() const;
     int ObtenerNumAristas() const;
+    int ObtenerGrado(char nom) const;
 };
 
 #endif // GRAFICA_HPP_INCLUDED
