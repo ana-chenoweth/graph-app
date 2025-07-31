@@ -40,6 +40,7 @@ private:
 public:
     Grafica();
     ~Grafica();
+    Grafica &operator=(const Grafica &g);
     Grafica(const Grafica &g);
 };
 
