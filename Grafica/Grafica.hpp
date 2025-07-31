@@ -45,6 +45,8 @@ public:
     Grafica &operator=(const Grafica &g);
     Grafica(const Grafica &g);
     void Agregar(char nom);
+    void Agregar(char inicio, char fin, int peso);
+    void Eliminar(char nom);
     bool Buscar(char nom) const;
     bool Buscar(char inicio, char fin) const;
 };

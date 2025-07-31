@@ -65,6 +65,29 @@ void Grafica::Agregar(char inicio, char fin, int peso)
     // aumenta el numero de aristas
     numAristas++;
 }
+//***********************************************************************************
+// M�todo para eliminar un nodo de la gr�fica
+void Grafica::Eliminar(char nom)
+{
+    Nodo *porBorrar  = BuscarDir(nom);
+    if(porBorrar == nullptr) return;
+
+    // actualiza el n�mero de aristas
+    numAristas -= porBorrar->Aislar();
+
+    // actualiza los punteros primero y �ltimo si es necesario
+    if (porBorrar == primero) primero = porBorrar->siguiente;
+    if (porBorrar == ultimo) ultimo = porBorrar->anterior;
+
+    // reconecta los nodos vecinos
+    if (porBorrar->anterior != nullptr) porBorrar->anterior->siguiente = porBorrar->siguiente;
+    if (porBorrar->siguiente != nullptr) porBorrar->siguiente->anterior = porBorrar->anterior;
+
+    // elimina el nodo y diminuye el n�mero de nodos
+    delete porBorrar;
+    numNodos--;
+}
+
 
 //***********************************************************************************
 
