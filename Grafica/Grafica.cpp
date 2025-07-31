@@ -235,8 +235,26 @@ void Grafica::Vaciar()
 }
 //***********************************************************************************
 
-// M�todo para verificar si la gr�fica est� vac�a
+// Metodo para verificar si la grafica esta vacia
 bool Grafica::EstaVacia() const
 {
     return numNodos == 0;
+}
+
+//***********************************************************************************
+
+// Implementaci�n de la estructura interna Nodo
+Grafica::Nodo::Nodo(char nom, Nodo *sig, Nodo *ant) : nombre(nom), grado(0), marca(false),
+                    primera(nullptr), ultima(nullptr), siguiente(sig), anterior(ant)
+{
+
+}
+
+//***********************************************************************************
+
+// Implementaci�n de la estructura interna Arista
+Grafica::Arista::Arista(Nodo *ady, int peso, Arista *sig, Arista *ant, bool marca) : adyacente(ady),
+                        peso(peso), siguiente(sig), anterior(ant), marca(marca)
+{
+
 }
