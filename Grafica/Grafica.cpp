@@ -331,3 +331,16 @@ int Grafica::Nodo::Aislar()
     }
     return numAristas;
 }
+//***********************************************************************************
+//********************************* M�TODOS DE PRIM *********************************
+//***********************************************************************************
+
+// M�todo para marcar un nodo
+void Grafica::MarcarNodo(char nom)
+{
+    Nodo *nodo = BuscarDir(nom);
+
+    if (nodo != nullptr) {
+        nodo->marca = true;
+    }
+}
