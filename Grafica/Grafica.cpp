@@ -332,10 +332,10 @@ int Grafica::Nodo::Aislar()
     return numAristas;
 }
 //***********************************************************************************
-//********************************* M�TODOS DE PRIM *********************************
+//********************************* METODOS DE PRIM *********************************
 //***********************************************************************************
 
-// M�todo para marcar un nodo
+// MEtodo para marcar un nodo
 void Grafica::MarcarNodo(char nom)
 {
     Nodo *nodo = BuscarDir(nom);
@@ -343,4 +343,34 @@ void Grafica::MarcarNodo(char nom)
     if (nodo != nullptr) {
         nodo->marca = true;
     }
+}
+//***********************************************************************************
+
+//MEtodo para marcar la arista
+void Grafica::MarcarArista(char inicio, char fin)
+{
+    // Verificar si la arista existe entre los nodos inicio y fin
+    if (!Buscar(inicio, fin)) {
+        std::cout << "No se encontr/242 la arista correspondiente entre los nodos " << inicio << " y " << fin << std::endl;
+        return; //excepcion
+    }
+
+    // Encontrar el nodo correspondiente al nombre de inicio
+    Nodo* nodoInicio = BuscarDir(inicio);
+
+    if (nodoInicio == nullptr) {
+        std::cout << "El nodo " << inicio << " no existe en la gr\240fica." << std::endl;
+        return; //excepcion
+    }
+
+    // Buscar la arista que conecta el nodo de inicio con el nodo de fin
+    Arista* arista = nodoInicio->BuscarDir(BuscarDir(fin));
+
+    if (arista == nullptr) {
+        std::cout << "No se encontr/242 la arista entre los nodos " << inicio << " y " << fin << std::endl;
+        return; //excepcion
+    }
+
+    // Marcar la arista
+    arista->marca = true;
 }

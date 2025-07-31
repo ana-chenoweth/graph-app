@@ -58,6 +58,7 @@ public:
     void Vaciar(); // Vaciar grafica
     bool EstaVacia() const;
     void MarcarNodo(char nom);
+    void MarcarArista(char inicio, char fin);
 };
 
 #endif // GRAFICA_HPP_INCLUDED
