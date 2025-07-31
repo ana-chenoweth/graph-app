@@ -87,6 +87,23 @@ void Grafica::Eliminar(char nom)
     delete porBorrar;
     numNodos--;
 }
+//***********************************************************************************
+
+// M�todo para eliminar una arista entre dos nodos
+void Grafica::Eliminar(char inicio, char fin)
+{
+    Nodo *ptrInicio  = BuscarDir(inicio);
+    if(ptrInicio == nullptr) return;
+
+    Nodo *ptrFin  = BuscarDir(fin);
+    if(ptrFin == nullptr) return;
+
+    ptrInicio->Eliminar(ptrFin); // elimina el fin del inicio
+    ptrFin->Eliminar(ptrInicio); // elimina el inicio del fin
+
+    // disminuye el n�mero de aristas
+    numAristas--;
+}
 
 
 //***********************************************************************************

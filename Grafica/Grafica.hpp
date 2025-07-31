@@ -47,6 +47,7 @@ public:
     void Agregar(char nom);
     void Agregar(char inicio, char fin, int peso);
     void Eliminar(char nom);
+    void Eliminar(char inicio, char fin);
     bool Buscar(char nom) const;
     bool Buscar(char inicio, char fin) const;
 };
