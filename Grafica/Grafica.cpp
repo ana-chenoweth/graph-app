@@ -299,3 +299,16 @@ Grafica::Arista * Grafica::Nodo::BuscarDir(Nodo *ady) const
 
     return actual;
 }
+//***********************************************************************************
+
+// Metodo para buscar la direccion de un nodo por su nombre
+Grafica::Nodo * Grafica::BuscarDir(char nom) const
+{
+    Nodo *actual = primero;
+
+    while(actual != nullptr && actual -> nombre != nom){
+        actual = actual -> siguiente;
+    }
+
+    return actual;
+}
