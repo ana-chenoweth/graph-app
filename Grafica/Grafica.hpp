@@ -46,6 +46,7 @@ public:
     Grafica(const Grafica &g);
     void Agregar(char nom);
     bool Buscar(char nom) const;
+    bool Buscar(char inicio, char fin) const;
 };
 
 #endif // GRAFICA_HPP_INCLUDED
