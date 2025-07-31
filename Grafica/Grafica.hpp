@@ -60,6 +60,7 @@ public:
     void MarcarNodo(char nom);
     void MarcarArista(char inicio, char fin);
     Arista* ObtenerAristaMinima(char nombreVertice);
+    bool Prim();
 };
 
 #endif // GRAFICA_HPP_INCLUDED

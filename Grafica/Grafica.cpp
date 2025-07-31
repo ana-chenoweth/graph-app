@@ -194,7 +194,7 @@ void Grafica::Imprimir() const
 }
 //***********************************************************************************
 
-// M�todo para imprimir la informacion de un nodo especifico
+// Metodo para imprimir la informacion de un nodo especifico
 void Grafica::Imprimir(char nom) const
 {
     Nodo *nodo = BuscarDir(nom);
@@ -270,7 +270,7 @@ void Grafica::Nodo::Agregar(Nodo *ady, int peso)
     if (aristaAdyacente) {
         aristaAdyacente->peso = peso; // Actualiza el peso de la arista en el nodo adyacente
     } else {
-        ady->Agregar(this, peso); // Si no existe la arista en el nodo adyacente, agr�gala con el mismo peso
+        ady->Agregar(this, peso); // Si no existe la arista en el nodo adyacente, agregala con el mismo peso
     }
 }
 //***********************************************************************************
@@ -406,4 +406,70 @@ Grafica::Arista* Grafica::ObtenerAristaMinima(char nombreVertice)
 
     // Devolver la arista minima encontrada
     return aristaMinima;
+}
+
+//***********************************************************************************
+
+// Metodo para encontrar el arbol de expansion minima utilizando el algoritmo de Prim
+bool Grafica::Prim()
+{
+    // Verificar si la grafica esta vacia
+    if (EstaVacia()) {
+        std::cout << "La grafica esta vacia." << std::endl;
+        return false;
+    }
+
+    // Marcar el primer nodo como visitado
+    MarcarNodo(primero->nombre);
+
+    // Inicializar arreglos para almacenar los nodos visitados y las aristas del arbol de expansion minima
+    char visitados[numNodos];
+    Arista* arbolExpMin[numNodos - 1]; // El numero maximo de aristas en un arbol de expansion minima es numNodos - 1
+
+    // Inicializar el numero de nodos visitados
+    int numVisitados = 1;
+    visitados[0] = primero->nombre;
+
+    // Mientras haya nodos por visitar
+    while (numVisitados < numNodos) {
+        // Inicializar una arista minima
+        Arista* aristaMinima = nullptr;
+        int pesoMinimo = std::numeric_limits<int>::max();
+
+        // Iterar sobre los nodos visitados para encontrar la arista minima que conecta un nodo visitado con uno no visitado
+        for (int i = 0; i < numVisitados; ++i) {
+            // Obtener la arista minima para el nodo actual
+            Arista* arista = ObtenerAristaMinima(visitados[i]);
+            if (arista && arista->peso < pesoMinimo && !arista->adyacente->marca) {
+                aristaMinima = arista;
+                pesoMinimo = arista->peso;
+            }
+        }
+
+        // Verificar si se encontro una arista minima
+        if (aristaMinima) {
+            // Marcar el nodo adyacente como visitado
+            MarcarNodo(aristaMinima->adyacente->nombre);
+            visitados[numVisitados++] = aristaMinima->adyacente->nombre;
+
+            // Agregar la arista minima al arbol de expansion minima
+            arbolExpMin[numVisitados - 2] = aristaMinima;
+        } else {
+            // Si no se encontro una arista minima, la grafica no es conexa
+            std::cout << "La grafica no es conexa." << std::endl;
+            return false;
+        }
+    }
+
+    // Imprimir el arbol de expansion minima y el peso total del arbol
+    int pesoTotal = 0;
+    std::cout << "Aristas del arbol de expansion minima:" << std::endl;
+
+    for (int i = 0; i < numNodos - 1; ++i) {
+        std::cout << "Arista: " << arbolExpMin[i]->adyacente->nombre << " - " << arbolExpMin[i]->peso << std::endl;
+        pesoTotal += arbolExpMin[i]->peso;
+    }
+
+    std::cout << "Peso total del arbol de expansion minima: " << pesoTotal << std::endl;
+    return true;
 }
