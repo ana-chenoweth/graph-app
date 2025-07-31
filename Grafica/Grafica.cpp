@@ -243,7 +243,7 @@ bool Grafica::EstaVacia() const
 
 //***********************************************************************************
 
-// Implementaci�n de la estructura interna Nodo
+// Implementacion de la estructura interna Nodo
 Grafica::Nodo::Nodo(char nom, Nodo *sig, Nodo *ant) : nombre(nom), grado(0), marca(false),
                     primera(nullptr), ultima(nullptr), siguiente(sig), anterior(ant)
 {
@@ -252,9 +252,24 @@ Grafica::Nodo::Nodo(char nom, Nodo *sig, Nodo *ant) : nombre(nom), grado(0), mar
 
 //***********************************************************************************
 
-// Implementaci�n de la estructura interna Arista
+// Implementacion de la estructura interna Arista
 Grafica::Arista::Arista(Nodo *ady, int peso, Arista *sig, Arista *ant, bool marca) : adyacente(ady),
                         peso(peso), siguiente(sig), anterior(ant), marca(marca)
 {
 
+}
+//***********************************************************************************
+// Metodo para agregar una arista a un nodo
+void Grafica::Nodo::Agregar(Nodo *ady, int peso)
+{
+    Arista *nueva = new Arista(ady, peso);
+    (EstaAislado() ? primera : ultima->siguiente) = nueva;
+    ultima = nueva;
+    ++grado;
+    Arista *aristaAdyacente = ady->BuscarDir(this); // Busca la arista que conecta al nodo adyacente con el actual
+    if (aristaAdyacente) {
+        aristaAdyacente->peso = peso; // Actualiza el peso de la arista en el nodo adyacente
+    } else {
+        ady->Agregar(this, peso); // Si no existe la arista en el nodo adyacente, agr�gala con el mismo peso
+    }
 }
