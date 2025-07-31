@@ -40,6 +40,7 @@ private:
 public:
     Grafica();
     ~Grafica();
+    Grafica(const Grafica &g);
 };
 
 #endif // GRAFICA_HPP_INCLUDED

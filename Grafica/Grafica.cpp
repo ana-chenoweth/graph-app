@@ -16,3 +16,10 @@ Grafica::~Grafica()
     Vaciar();
 }
 
+//***********************************************************************************
+
+// Constructor de copia de la clase Grafica
+Grafica::Grafica(const Grafica &g): numNodos(0), numAristas(0), primero(nullptr), ultimo(nullptr)
+{
+    *this = g;
+}
