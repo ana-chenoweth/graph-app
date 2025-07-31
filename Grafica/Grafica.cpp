@@ -287,4 +287,15 @@ void Grafica::Nodo::Eliminar(Nodo *ady)
     delete porBorrar;
     --grado;
 }
+//***********************************************************************************
 
+// Metodo para buscar la direccion de una arista por el nodo adyacente
+Grafica::Arista * Grafica::Nodo::BuscarDir(Nodo *ady) const
+{
+    Arista *actual = primera;
+
+    while (actual != nullptr && actual->adyacente != ady)
+        actual = actual->siguiente;
+
+    return actual;
+}
