@@ -273,3 +273,18 @@ void Grafica::Nodo::Agregar(Nodo *ady, int peso)
         ady->Agregar(this, peso); // Si no existe la arista en el nodo adyacente, agr�gala con el mismo peso
     }
 }
+//***********************************************************************************
+
+// Metodo para eliminar una arista de un nodo
+void Grafica::Nodo::Eliminar(Nodo *ady)
+{
+    Arista *porBorrar = BuscarDir(ady);
+    if(porBorrar == nullptr) return;
+
+    (porBorrar == primera ? primera : porBorrar->anterior->siguiente) = porBorrar->siguiente;
+    (porBorrar == ultima ? ultima : porBorrar->siguiente->anterior) = porBorrar->anterior;
+
+    delete porBorrar;
+    --grado;
+}
+
