@@ -192,3 +192,23 @@ void Grafica::Imprimir() const
         nodoActual = nodoActual->siguiente;
     }
 }
+//***********************************************************************************
+
+// M�todo para imprimir la informacion de un nodo especifico
+void Grafica::Imprimir(char nom) const
+{
+    Nodo *nodo = BuscarDir(nom);
+
+    if (nodo != nullptr) {
+        std::cout << "Nodo: " << nodo->nombre << ", Grado: " << nodo->grado << std::endl;
+        Arista *aristaActual = nodo->primera;
+
+        while (aristaActual != nullptr) {
+            std::cout << "  -> Arista hacia nodo: " << aristaActual->adyacente->nombre << std::endl;
+            aristaActual = aristaActual->siguiente;
+        }
+
+    } else {
+        std::cout << "El nodo " << nom << " no existe en la grafica." << std::endl;
+    }
+}

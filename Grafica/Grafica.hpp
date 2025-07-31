@@ -54,6 +54,7 @@ public:
     int ObtenerNumAristas() const;
     int ObtenerGrado(char nom) const;
     void Imprimir() const;
+    void Imprimir(char nom) const;
 };
 
 #endif // GRAFICA_HPP_INCLUDED
