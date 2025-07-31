@@ -359,7 +359,7 @@ void Grafica::MarcarArista(char inicio, char fin)
     Nodo* nodoInicio = BuscarDir(inicio);
 
     if (nodoInicio == nullptr) {
-        std::cout << "El nodo " << inicio << " no existe en la gr\240fica." << std::endl;
+        std::cout << "El nodo " << inicio << " no existe en la grafica." << std::endl;
         return; //excepcion
     }
 
@@ -367,10 +367,43 @@ void Grafica::MarcarArista(char inicio, char fin)
     Arista* arista = nodoInicio->BuscarDir(BuscarDir(fin));
 
     if (arista == nullptr) {
-        std::cout << "No se encontr/242 la arista entre los nodos " << inicio << " y " << fin << std::endl;
+        std::cout << "No se encontro la arista entre los nodos " << inicio << " y " << fin << std::endl;
         return; //excepcion
     }
 
     // Marcar la arista
     arista->marca = true;
+}
+//***********************************************************************************
+
+// Metodo para obtener la arista minima de un vertice
+Grafica::Arista* Grafica::ObtenerAristaMinima(char nombreVertice)
+{
+    // Buscar el nodo correspondiente al nombre dado
+    Nodo* nodo = BuscarDir(nombreVertice);
+
+    if (nodo == nullptr) {
+        std::cout << "El vertice " << nombreVertice << " no existe en la grafica." << std::endl;
+        return nullptr; //excepcion
+    }
+
+    // Inicializar la arista minima como nula y el peso minimo como el maximo posible
+    Arista* aristaMinima = nullptr;
+    int pesoMinimo = std::numeric_limits<int>::max();
+
+    // Iterar sobre todas las aristas del vertice y encontrar la arista con el menor peso
+    Arista* aristaActual = nodo->primera;
+
+    while (aristaActual != nullptr) {
+        // Verificar si la arista lleva a un nodo no marcado
+        if (!aristaActual->adyacente->marca && aristaActual->peso < pesoMinimo && !aristaActual->marca) {
+            aristaMinima = aristaActual;
+            pesoMinimo = aristaActual->peso;
+        }
+
+        aristaActual = aristaActual->siguiente;
+    }
+
+    // Devolver la arista minima encontrada
+    return aristaMinima;
 }
