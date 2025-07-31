@@ -53,6 +53,7 @@ public:
     int ObtenerNumNodos() const;
     int ObtenerNumAristas() const;
     int ObtenerGrado(char nom) const;
+    void Imprimir() const;
 };
 
 #endif // GRAFICA_HPP_INCLUDED

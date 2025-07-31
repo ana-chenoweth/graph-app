@@ -66,16 +66,16 @@ void Grafica::Agregar(char inicio, char fin, int peso)
     numAristas++;
 }
 //***********************************************************************************
-// M�todo para eliminar un nodo de la gr�fica
+// Metodo para eliminar un nodo de la grafica
 void Grafica::Eliminar(char nom)
 {
     Nodo *porBorrar  = BuscarDir(nom);
     if(porBorrar == nullptr) return;
 
-    // actualiza el n�mero de aristas
+    // actualiza el numero de aristas
     numAristas -= porBorrar->Aislar();
 
-    // actualiza los punteros primero y �ltimo si es necesario
+    // actualiza los punteros primero y ultimo si es necesario
     if (porBorrar == primero) primero = porBorrar->siguiente;
     if (porBorrar == ultimo) ultimo = porBorrar->anterior;
 
@@ -83,13 +83,13 @@ void Grafica::Eliminar(char nom)
     if (porBorrar->anterior != nullptr) porBorrar->anterior->siguiente = porBorrar->siguiente;
     if (porBorrar->siguiente != nullptr) porBorrar->siguiente->anterior = porBorrar->anterior;
 
-    // elimina el nodo y diminuye el n�mero de nodos
+    // elimina el nodo y diminuye el numero de nodos
     delete porBorrar;
     numNodos--;
 }
 //***********************************************************************************
 
-// M�todo para eliminar una arista entre dos nodos
+// Metodo para eliminar una arista entre dos nodos
 void Grafica::Eliminar(char inicio, char fin)
 {
     Nodo *ptrInicio  = BuscarDir(inicio);
@@ -101,7 +101,7 @@ void Grafica::Eliminar(char inicio, char fin)
     ptrInicio->Eliminar(ptrFin); // elimina el fin del inicio
     ptrFin->Eliminar(ptrInicio); // elimina el inicio del fin
 
-    // disminuye el n�mero de aristas
+    // disminuye el numero de aristas
     numAristas--;
 }
 
@@ -115,7 +115,7 @@ bool Grafica::Buscar(char nom) const
 }
 //***********************************************************************************
 
-// M�todo para buscar una arista entre dos nodos
+// Metodo para buscar una arista entre dos nodos
 bool Grafica::Buscar(char inicio, char fin) const
 {
     Nodo *ptrInicio = BuscarDir(inicio);
@@ -151,7 +151,7 @@ Grafica::Nodo * Grafica::BuscarDir(char nom) const
 
 //***********************************************************************************
 
-// M�todo para obtener el n�mero de nodos en la gr�fica
+// Metodo para obtener el numero de nodos en la grafica
 int Grafica::ObtenerNumNodos() const
 {
     return numNodos;
@@ -159,14 +159,14 @@ int Grafica::ObtenerNumNodos() const
 
 //***********************************************************************************
 
-// M�todo para obtener el n�mero de aristas en la gr�fica
+// Metodo para obtener el numero de aristas en la grafica
 int Grafica::ObtenerNumAristas() const
 {
     return numAristas;
 }
 //***********************************************************************************
 
-// M�todo para obtener el grado de un nodo dado su nombre
+// Metodo para obtener el grado de un nodo dado su nombre
 int Grafica::ObtenerGrado(char nom) const
 {
     Nodo *nodo = BuscarDir(nom);
@@ -178,7 +178,7 @@ int Grafica::ObtenerGrado(char nom) const
 }
 //***********************************************************************************
 
-// M�todo para imprimir toda la gr�fica
+// Metodo para imprimir toda la grafica
 void Grafica::Imprimir() const
 {
     Nodo *nodoActual = primero;
