@@ -50,6 +50,8 @@ public:
     void Eliminar(char inicio, char fin);
     bool Buscar(char nom) const;
     bool Buscar(char inicio, char fin) const;
+    int ObtenerNumNodos() const;
+    int ObtenerNumAristas() const;
 };
 
 #endif // GRAFICA_HPP_INCLUDED

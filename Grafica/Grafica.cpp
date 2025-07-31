@@ -148,3 +148,19 @@ Grafica::Nodo * Grafica::BuscarDir(char nom) const
 
     return actual;
 }
+
+//***********************************************************************************
+
+// M�todo para obtener el n�mero de nodos en la gr�fica
+int Grafica::ObtenerNumNodos() const
+{
+    return numNodos;
+}
+
+//***********************************************************************************
+
+// M�todo para obtener el n�mero de aristas en la gr�fica
+int Grafica::ObtenerNumAristas() const
+{
+    return numAristas;
+}
