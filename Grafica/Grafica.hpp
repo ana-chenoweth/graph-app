@@ -37,12 +37,15 @@ private:
         Nodo *siguiente, *anterior;
     } *primero, *ultimo;
 
+    Nodo* BuscarDir(char nom) const;
+
 public:
     Grafica();
     ~Grafica();
     Grafica &operator=(const Grafica &g);
     Grafica(const Grafica &g);
     void Agregar(char nom);
+    bool Buscar(char nom) const;
 };
 
 #endif // GRAFICA_HPP_INCLUDED

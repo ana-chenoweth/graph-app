@@ -43,3 +43,25 @@ void Grafica::Agregar(char nom)
     }
     numNodos++;
 }
+//***********************************************************************************
+
+// M�todo para buscar un nodo por su nombre
+bool Grafica::Buscar(char nom) const
+{
+    return BuscarDir(nom) != nullptr;
+}
+
+
+//***********************************************************************************
+
+// M�todo para buscar la direcci�n de un nodo por su nombre
+Grafica::Nodo * Grafica::BuscarDir(char nom) const
+{
+    Nodo *actual = primero;
+
+    while(actual != nullptr && actual -> nombre != nom){
+        actual = actual -> siguiente;
+    }
+
+    return actual;
+}
