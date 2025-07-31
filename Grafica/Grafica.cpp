@@ -212,3 +212,24 @@ void Grafica::Imprimir(char nom) const
         std::cout << "El nodo " << nom << " no existe en la grafica." << std::endl;
     }
 }
+//***********************************************************************************
+
+void Grafica::Vaciar()
+{
+    while (primero != nullptr) {
+        Nodo *temp = primero;
+        primero = primero->siguiente;
+
+        // Eliminar todas las aristas del nodo
+        while (temp->primera != nullptr) {
+            Arista *tempArista = temp->primera;
+            temp->primera = temp->primera->siguiente;
+            delete tempArista;
+        }
+
+        delete temp;
+    }
+
+    numNodos = 0;
+    numAristas = 0;
+}
