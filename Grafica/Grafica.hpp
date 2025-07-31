@@ -56,6 +56,7 @@ public:
     void Imprimir() const;
     void Imprimir(char nom) const;
     void Vaciar(); // Vaciar grafica
+    bool EstaVacia() const;
 };
 
 #endif // GRAFICA_HPP_INCLUDED

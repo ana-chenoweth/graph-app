@@ -233,3 +233,10 @@ void Grafica::Vaciar()
     numNodos = 0;
     numAristas = 0;
 }
+//***********************************************************************************
+
+// M�todo para verificar si la gr�fica est� vac�a
+bool Grafica::EstaVacia() const
+{
+    return numNodos == 0;
+}
