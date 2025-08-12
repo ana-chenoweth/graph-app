@@ -235,6 +235,25 @@ void Grafica::Vaciar()
 }
 //***********************************************************************************
 
+// Metodo para vaciar un nodo y aislarlo
+void Grafica::Vaciar(char nom)
+{
+    Nodo *nodo = BuscarDir(nom);
+    if (nodo != nullptr) {
+        numAristas -= nodo->Aislar();
+
+        if (nodo == primero)
+            primero = nodo->siguiente;
+
+        if (nodo == ultimo)
+            ultimo = nodo->anterior;
+
+        delete nodo;
+        numNodos--;
+    }
+}
+//***********************************************************************************
+
 // Metodo para verificar si la grafica esta vacia
 bool Grafica::EstaVacia() const
 {
